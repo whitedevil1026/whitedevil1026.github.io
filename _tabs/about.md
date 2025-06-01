@@ -15,6 +15,5 @@ order: 4
 
 🎮 Outside the terminal? I binge anime, outplay noobs in games, and recharge my brain with creativity.
 
-
 💻 This blog is my digital war room—where I share lessons, hacks, fails, wins, and the unfiltered truth of life in cyber.
 Stick around—things get real here.
