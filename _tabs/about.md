@@ -8,6 +8,7 @@ order: 4
 🎯 Ranked Top 50 in TCS HackQuest Season 9, powered by caffeine, curiosity, and a love for digging deep into systems.
 
 🛡️ CEH v12 Certified, with a growing arsenal of TryHackMe achievements:
+
  • Pre-Security
  • Introduction to Cyber Security
  • Advent of Cyber 2022
