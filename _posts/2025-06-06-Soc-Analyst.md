@@ -1,8 +1,8 @@
 ---
 title: "What is SOC? Roles, Skills, and Certifications for SOC Analysts"
 date: 2025-06-06
-categories: [Web Development]
-tags: [SOC, Cybersecurity, Analyst, Certifications, Security, SIEM, Career]
+categories: [Cybersecurity]
+tags: [SOC Analyst]
 ---
 
 # what is SOC
