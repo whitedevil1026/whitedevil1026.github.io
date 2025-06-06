@@ -1,7 +1,7 @@
 ---
 title: "How to Host a Website Using GitHub and Chirpy Starter"
 date: 2025-06-01
-categories: [web]
+categories: [web Development]
 tags: [jekyll, ruby, vs-code]
 ---
 
