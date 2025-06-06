@@ -1,7 +1,7 @@
 ---
 title: "What is SOC? Roles, Skills, and Certifications for SOC Analysts"
 date: 2025-06-06
-categories: [Cybersecurity]
+categories: [CyberSecurity]
 tags: [SOC Analyst]
 ---
 
