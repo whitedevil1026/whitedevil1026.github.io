@@ -1,6 +1,6 @@
 ---
 title: "Recent DFIR Artifacts: Mac Imaging Made Easy with Fuji"
-date: 2026-03-19
+date: 2026-03-18
 categories: [Cybersecurity, DFIR]
 tags: [Forensics, Mac, Fuji, Open Source]
 ---
@@ -15,11 +15,15 @@ However, a new tool introduced in 2026 promises to streamline this process: **Fu
 
 Fuji is a free, open-source tool specifically designed for performing live, logical forensic acquisitions of Mac computers. Whether the target machine is running on an older Intel architecture or the latest Apple Silicon (M-series chips), Fuji provides a robust solution for extracting vital forensic artifacts.
 
-### Key Features
+### Deep Dive into Fuji's Capabilities
 
-- **Live Logical Acquisition**: Allows analysts to acquire data from live systems without shutting them down, preserving volatile data and encrypted states.
-- **Cross-Architecture Support**: Fully compatible with both Intel processors and Apple Silicon, making it a versatile tool for any modern Mac environment.
-- **Open-Source Flexibility**: Being open-source, the community can review, contribute to, and audit the code, ensuring transparency and continuous improvement.
+Fuji, developed by Andrea Lazzarotto and released under the GNU General Public License (v3), was built specifically to overcome the hurdles introduced by modern Mac hardware encryption. Here is a closer look at what makes it incredibly resourceful for investigators:
+
+- **Full File System (FFS) Live Acquisition**: Fuji focuses on logical data and existing files from live systems, bypassing the need for complex decryption offline workflows.
+- **Leverages Native Apple Utilities**: Under the hood, Fuji smartly utilizes **Apple Software Restore (ASR)** as its default engine, seamlessly falling back to **Rsync** for targeted folder acquisition or damaged file systems.
+- **Standardized Outputs**: It automatically generates `.dmg` and `.sparseimage` containers. These output formats integrate flawlessly into industry-standard digital forensics programs like **FTK Imager** and **Autopsy**.
+- **Sysdiagnose Mode & Unified Logs**: Beyond simple file extraction, Fuji features a dedicated `sysdiagnose` mode. It can collect macOS system logs (including unified logs) and heavily relies on converting them into SQLite, making it drastically easier for analysts to parse and query log artifacts.
+- **Cross-Architecture Support**: Fully compatible with both older Intel processors and the latest M-Series Apple Silicon Macs.
 
 ## Why Fuji Matters for DFIR
 
