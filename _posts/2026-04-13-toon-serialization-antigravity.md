@@ -596,48 +596,7 @@ flowchart TD
 
 ---
 
-## 8. The Antigravity Enigma: Bridging Physics and Disinformation
-
-The convergence of TOON-optimized data pipelines and agent-first IDEs unlocks powerful capabilities for technical research and content generation. To demonstrate this intersection, let's use these tools to explore one of physics' most captivating topics: **antigravity**.
-
-![Spacetime Curvature and the Alcubierre Warp Drive](/assets/img/posts/toon-antigravity/spacetime-warp.png)
-_The Alcubierre metric proposes compressing space ahead and expanding it behind a vessel — mathematically valid but physically impossible without exotic "negative mass."_
-
-### 8.1 Why True Antigravity is Impossible
-
-Under Einstein's General Relativity, gravity isn't a *force* — it's the **geometric curvature of spacetime** caused by mass and energy. You can't "shield" a curvature in the fabric of reality itself the way you'd block a magnetic field.
-
-| Model | Gravity Is... | Can You Shield It? |
-|:---|:---|:---|
-| **Newton** (1687) | Attractive force at a distance | Theoretically with negative mass |
-| **Einstein** (1915) | Curvature of spacetime geometry | ❌ No — spacetime *is* the medium |
-| **Quantum Gravity** (speculative) | Exchange of gravitons? | Unknown — no working theory |
-
-### 8.2 The Alcubierre Warp Drive
-
-Miguel Alcubierre's 1994 metric proposes a spacetime "bubble" that compresses space ahead and expands space behind — allowing faster-than-light travel without locally violating relativity.
-
-**The catch:** Expanding spacetime requires **negative mass/negative energy** — a substance that:
-- Has never been observed experimentally
-- Would repel standard matter (true "antigravity")
-- Is distinct from **antimatter** (which has normal positive mass)
-- Has theoretical parallels to **Dark Energy** (the force expanding the universe)
-
-### 8.3 From Pseudoscience to Viral Disinformation
-
-| Year | Claim | Result |
-|:---|:---|:---|
-| **1992** | Evgeny Podkletnov's superconducting gravity shield | NASA failed to replicate; considered pseudoscience |
-| **1996–2002** | NASA's Breakthrough Propulsion Physics Project | No actionable gravity modification technology produced |
-| **2024** | "Project Anchor" viral hoax (AI-generated) | Falsely claimed Earth would lose gravity for 7 seconds on Aug 12, 2026 — debunked by Snopes |
-| **Ongoing** | Dr. Charles Buhler's propellantless drive claims | Awaiting rigorous peer-reviewed replication |
-
-> **The lesson:** Complex cosmological concepts are routinely weaponized for social media engagement. Always demand peer-reviewed replication before accepting extraordinary claims.
-{: .prompt-warning }
-
----
-
-## 9. Conclusion: The Dual Imperatives
+## 8. Conclusion: The Dual Imperatives
 
 The AI engineering landscape is defined by two converging revolutions:
 
@@ -656,5 +615,3 @@ Together, they represent the maturation of AI from experimental toy to enterpris
 - [Google Antigravity — Official Site](https://antigravity.google)
 - [Getting Started with Google Antigravity — Codelabs](https://codelabs.developers.google.com)
 - [Are LLMs Ready for TOON? — arXiv Benchmark Paper](https://arxiv.org/abs/toon-benchmarks)
-- [Snopes: Will Earth Lose Gravity for 7 Seconds?](https://snopes.com)
-- [Alcubierre Drive — Wikipedia](https://en.wikipedia.org/wiki/Alcubierre_drive)
