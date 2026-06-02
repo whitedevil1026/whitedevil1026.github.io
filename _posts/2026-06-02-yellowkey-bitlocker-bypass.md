@@ -3,6 +3,7 @@ title: "CVE-2026-45585 — YellowKey: How a USB Stick Can Bypass BitLocker"
 date: 2026-06-02
 categories: [Security, Windows]
 tags: [CVE-2026-45585, YellowKey, BitLocker, WinRE, Transactional NTFS, TxF, Physical Access, TPM, Windows 11]
+mermaid: true
 image:
   path: /assets/img/posts/yellowkey-bitlocker/banner.png
   alt: CVE-2026-45585 YellowKey — BitLocker Bypass via Windows Recovery Environment
