@@ -59,17 +59,12 @@ Now here's what actually happens on the machine:
 
 ```mermaid
 flowchart TD
-    A["1. Attacker plugs in USB
-    with crafted FsTx files"] --> B["2. Forces reboot into WinRE"]
-    B --> C["3. TPM auto-decrypts the drive
-    (no PIN required)"]
-    C --> D["4. autofstx.exe runs
-    (replays USB transaction logs)"]
+    A["1. Attacker plugs in USB<br>with crafted FsTx files"] --> B["2. Forces reboot into WinRE"]
+    B --> C["3. TPM auto-decrypts the drive<br>(no PIN required)"]
+    C --> D["4. autofstx.exe runs<br>(replays USB transaction logs)"]
     D --> E["5. Deletes winpeshl.ini"]
-    E --> F["6. WinRE falls back to cmd.exe
-    instead of locked recovery UI"]
-    F --> G["7. Full access to
-    the decrypted C: drive"]
+    E --> F["6. WinRE falls back to cmd.exe<br>instead of locked recovery UI"]
+    F --> G["7. Full access to<br>the decrypted C: drive"]
 ```
 
 Let's break that down:
