@@ -42,6 +42,85 @@ sudo mount -o ro,loop,offset=1048576,noatime suspect.img /mnt/img
 
 ---
 
+## Linux Artifact Map — What Is What
+
+Before you dig, understand what each path *is*, what it *stores*, and what it *controls* on the system. This is the map every Linux forensics investigator needs.
+
+### Identity & Access Control
+
+| Path | What It Is | What It Stores | What It Controls |
+|:---|:---|:---|:---|
+| `/etc/passwd` | Plain-text user database | Username, UID, GID, home dir, login shell | Who can log in and as what |
+| `/etc/shadow` | Hashed password store | Password hashes, expiry dates, last-changed epoch | Who can authenticate |
+| `/etc/group` | Group definitions | Group names, GIDs, member lists | File permission groups |
+| `/etc/sudoers` | Sudo policy file | Who can run what as root | Privilege escalation rules |
+| `/etc/sudoers.d/` | Drop-in sudo rules | Per-user/app sudo overrides | Granular root access grants |
+
+### Shell & Command History
+
+| Path | What It Is | What It Stores | What It Controls |
+|:---|:---|:---|:---|
+| `~/.bash_history` | Bash command log | Every command typed in bash (buffered) | User's entire terminal activity |
+| `~/.zsh_history` | Zsh command log | Every command typed in zsh | Same, for zsh users |
+| `~/.bashrc` | Bash config (non-login shells) | Aliases, functions, env vars, startup commands | Runs automatically on every new bash session |
+| `~/.bash_profile` / `~/.profile` | Bash config (login shells) | Login-time commands, env setup | Runs once on SSH login or tty login |
+| `/etc/profile.d/*.sh` | System-wide shell init scripts | Global environment settings | Runs for every user at login |
+
+### Logs
+
+| Path | What It Is | What It Stores | What It Controls |
+|:---|:---|:---|:---|
+| `/var/log/auth.log` | Authentication log (Debian) | SSH logins, sudo use, PAM events, account changes | Tracks every login and priv-esc event |
+| `/var/log/secure` | Authentication log (RHEL) | Same as above | Tracks every login and priv-esc event |
+| `/var/log/syslog` | General system log (Debian) | Kernel messages, daemon output, service events | Broad system activity record |
+| `/var/log/messages` | General system log (RHEL) | Same as syslog | Broad system activity record |
+| `/var/log/kern.log` | Kernel log | Hardware events, kernel warnings, USB attach/detach | Low-level system events |
+| `/var/log/cron` | Cron execution log | Every cron job trigger with timestamp | Scheduled task execution record |
+| `/var/log/wtmp` | Binary login database | Successful logins, logouts, reboots | Session history (parse with `last`) |
+| `/var/log/btmp` | Binary failed login database | Every failed login attempt | Brute-force evidence (parse with `lastb`) |
+| `/var/log/lastlog` | Binary last-login database | Most recent login per user account | Quick "who last logged in" reference |
+| `/var/log/journal/` | systemd binary journal | Structured log entries from all services | Central log store for systemd systems |
+| `/var/log/apt/history.log` | APT package history (Debian) | Install, remove, upgrade operations with timestamps | Software change audit trail |
+| `/var/log/dpkg.log` | Low-level dpkg log | Individual package file operations | Package-level install detail |
+| `/var/log/dnf.log` | DNF/YUM package history (RHEL) | Package installs, removals, updates | Software change audit trail |
+
+### Persistence Mechanisms
+
+| Path | What It Is | What It Stores | What It Controls |
+|:---|:---|:---|:---|
+| `/etc/crontab` | System cron table | Scheduled jobs with user context | System-wide scheduled execution |
+| `/var/spool/cron/crontabs/<user>` | Per-user cron table | User-owned scheduled jobs | Per-user recurring execution |
+| `/etc/cron.d/` | Drop-in cron directory | App/package-added cron jobs | Additional scheduled tasks |
+| `/etc/cron.daily/` `/cron.hourly/` etc. | Time-based script dirs | Scripts run at fixed intervals | Interval-based automation |
+| `/etc/systemd/system/` | systemd system service dir | `.service`, `.timer`, `.socket` unit files | What starts on boot (system-level) |
+| `~/.config/systemd/user/` | User systemd service dir | User-owned service units | What starts on user login |
+| `/etc/rc.local` | Legacy startup script | Commands run at boot (pre-systemd) | Old-style boot-time persistence |
+| `/etc/init.d/` | SysV init scripts | Service start/stop scripts | Legacy service management |
+
+### Network & Remote Access
+
+| Path | What It Is | What It Stores | What It Controls |
+|:---|:---|:---|:---|
+| `~/.ssh/authorized_keys` | SSH public key whitelist | Public keys allowed to authenticate as this user | Who can SSH in without a password |
+| `~/.ssh/known_hosts` | SSH server fingerprint cache | Fingerprints of SSH servers this user connected to | Prevents MITM, reveals SSH history |
+| `~/.ssh/id_rsa` / `id_ed25519` | SSH private key | User's private key for outbound SSH | Identity for outbound SSH connections |
+| `~/.ssh/config` | SSH client config | Host aliases, jump hosts, key mappings | Shorthand for SSH connections |
+| `/etc/ssh/sshd_config` | SSH server config | Allowed auth methods, ports, root login toggle | Controls how inbound SSH works |
+| `/etc/hosts` | Local DNS override | IP-to-hostname mappings, bypasses DNS | Controls name resolution before DNS |
+| `/etc/resolv.conf` | DNS client config | DNS server IPs | Controls what DNS server is used |
+| `/var/lib/dhcp/dhclient.leases` | DHCP lease history | Past IP addresses, gateway, DNS server | Shows network identity over time |
+
+### Filesystem Artifacts
+
+| Path | What It Is | What It Stores | What It Controls |
+|:---|:---|:---|:---|
+| `/tmp/` | Temporary filesystem | Short-lived files, often world-writable | Cleared on reboot — malware staging area |
+| `/var/tmp/` | Persistent temp filesystem | Temp files that survive reboots | Longer-lived staging area |
+| `/dev/shm/` | Shared memory filesystem | RAM-backed files (disappear on reboot) | Inter-process memory sharing |
+| Inode table (EXT4) | Per-file metadata record | MACB timestamps, permissions, owner, data block pointers | File identity — survives filename deletion |
+
+---
+
 ## 1. User Accounts — Establish the Cast
 
 ```
